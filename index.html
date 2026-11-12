@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<title>NM REPORTS | Premium Cricket Community</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --white:#ffffff;
+    --grey:#999999;
+    --dark:#050505;
+}
+
+body{
+    background:#050505;
+    color:white;
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at 50% 35%,#242424 0%,transparent 48%),
+    radial-gradient(circle at 10% 90%,#171717 0%,transparent 40%);
+    pointer-events:none;
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:430px;
+    min-height:100vh;
+    padding:22px 23px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    animation:enter 1s ease both;
+}
+
+@keyframes enter{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+        filter:blur(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+        filter:blur(0);
+    }
+}
+
+/* TOP BRAND */
+
+.brand{
+    text-align:center;
+    margin-bottom:19px;
+}
+
+.logo-box{
+    width:83px;
+    height:83px;
+    margin:0 auto 12px;
+    border-radius:23px;
+    background:linear-gradient(145deg,#242424,#080808);
+    border:1px solid #444;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 0 35px #ffffff12;
+    animation:logoGlow 3s infinite alternate;
+}
+
+.logo-box img{
+    width:72%;
+    height:72%;
+    object-fit:contain;
+}
+
+@keyframes logoGlow{
+    from{box-shadow:0 0 10px #ffffff12;}
+    to{box-shadow:0 0 30px #ffffff30;}
+}
+
+.brand h1{
+    font-family:'Orbitron',sans-serif;
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.brand p{
+    font-size:9px;
+    letter-spacing:4px;
+    color:#999;
+    margin-top:6px;
+    font-weight:600;
+}
+
+/* STATUS */
+
+.status{
+    display:flex;
+    justify-content:center;
+    margin-bottom:18px;
+}
+
+.status span{
+    border:1px solid #373737;
+    border-radius:30px;
+    padding:7px 14px;
+    font-size:9px;
+    letter-spacing:1.5px;
+    color:#ddd;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.dot{
+    height:7px;
+    width:7px;
+    background:#fff;
+    border-radius:50%;
+    box-shadow:0 0 10px white;
+    animation:blink 1.2s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:.25;}
+}
+
+/* MAIN CARD */
+
+.main-card{
+    background:linear-gradient(145deg,#171717,#090909);
+    border:1px solid #333;
+    border-radius:22px;
+    padding:23px 18px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px #000;
+}
+
+.main-card:before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:#ffffff08;
+    top:-100px;
+    left:50%;
+    transform:translateX(-50%);
+    filter:blur(20px);
+}
+
+.eyebrow{
+    font-size:10px;
+    color:#aaa;
+    letter-spacing:3px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.main-card h2{
+    font-size:23px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.main-card h2 span{
+    color:#999;
+}
+
+/* TIMER */
+
+.timer-label{
+    margin-top:22px;
+    font-size:10px;
+    color:#aaa;
+    letter-spacing:2px;
+    font-weight:600;
+}
+
+.timer{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:9px;
+    margin-top:13px;
+}
+
+.time-box{
+    width:76px;
+    padding:13px 5px;
+    background:linear-gradient(180deg,#242424,#101010);
+    border:1px solid #454545;
+    border-radius:12px;
+}
+
+.time-box strong{
+    font-family:'Orbitron',sans-serif;
+    font-size:29px;
+    font-weight:800;
+    display:block;
+    font-variant-numeric:tabular-nums;
+}
+
+.time-box small{
+    font-size:8px;
+    color:#999;
+    letter-spacing:2px;
+    display:block;
+    margin-top:5px;
+}
+
+.colon{
+    font-size:24px;
+    color:#777;
+    animation:blink 1s infinite;
+}
+
+.timer-note{
+    font-size:9px;
+    color:#777;
+    margin-top:12px;
+}
+
+/* DIGITAL HIGHLIGHTS */
+
+.features{
+    margin-top:20px;
+    padding:17px;
+    border:1px solid #292929;
+    border-radius:17px;
+    background:#101010;
+}
+
+.feature-heading{
+    font-size:10px;
+    letter-spacing:2px;
+    color:#999;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.feature{
+    margin-bottom:14px;
+}
+
+.feature:last-child{
+    margin-bottom:0;
+}
+
+.feature-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:10px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.feature-top span:last-child{
+    color:#aaa;
+    font-family:'Orbitron',sans-serif;
+    font-size:9px;
+}
+
+.blocks{
+    display:flex;
+    gap:4px;
+}
+
+.blocks i{
+    display:block;
+    flex:1;
+    height:6px;
+    background:#303030;
+    border-radius:2px;
+    animation:blockPulse 2s infinite alternate;
+}
+
+.blocks i:nth-child(-n+5){
+    background:#eee;
+}
+
+.blocks i:nth-child(2){
+    animation-delay:.2s;
+}
+
+.blocks i:nth-child(3){
+    animation-delay:.4s;
+}
+
+.blocks i:nth-child(4){
+    animation-delay:.6s;
+}
+
+@keyframes blockPulse{
+    from{opacity:.45;}
+    to{opacity:1;}
+}
+
+/* FLOATING HIGHLIGHTS */
+
+.floating{
+    display:flex;
+    justify-content:center;
+    gap:9px;
+    margin-top:17px;
+}
+
+.float-item{
+    border:1px solid #373737;
+    background:#111;
+    border-radius:50px;
+    padding:9px 12px;
+    font-size:9px;
+    color:#ddd;
+    animation:float 3s ease-in-out infinite;
+}
+
+.float-item:nth-child(2){
+    animation-delay:.5s;
+}
+
+.float-item:nth-child(3){
+    animation-delay:1s;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-5px);}
+}
+
+/* CTA */
+
+.join-btn{
+    display:block;
+    width:100%;
+    text-decoration:none;
+    text-align:center;
+    margin-top:21px;
+    background:#fff;
+    color:#050505;
+    padding:17px;
+    border-radius:12px;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+    transition:.3s;
+    box-shadow:0 5px 25px #ffffff20;
+}
+
+.join-btn:active{
+    transform:scale(.97);
+}
+
+.join-btn:hover{
+    background:#ddd;
+}
+
+.footer{
+    text-align:center;
+    color:#555;
+    font-size:8px;
+    letter-spacing:2px;
+    margin-top:18px;
+}
+
+/* NOTIFICATION */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translate(-50%,120px);
+    width:calc(100% - 45px);
+    max-width:370px;
+    padding:13px 15px;
+    border-radius:13px;
+    background:#181818;
+    border:1px solid #444;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    z-index:10;
+    transition:.5s;
+    box-shadow:0 10px 35px #000;
+}
+
+.toast.show{
+    transform:translate(-50%,0);
+}
+
+.toast-icon{
+    width:35px;
+    height:35px;
+    background:#fff;
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    font-weight:900;
+}
+
+.toast-text strong{
+    font-size:10px;
+    display:block;
+}
+
+.toast-text small{
+    color:#999;
+    font-size:9px;
+    display:block;
+    margin-top:4px;
+}
+
+@media(max-height:750px){
+    .container{
+        padding-top:12px;
+        padding-bottom:12px;
+        transform:scale(.91);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="brand">
+
+        <div class="logo-box">
+            <img src="logo.png" alt="NM Reports Logo">
+        </div>
+
+        <h1>NM REPORTS</h1>
+        <p>CRICKET ANALYSIS COMMUNITY</p>
+
+    </div>
+
+    <div class="status">
+        <span>
+            <i class="dot"></i>
+            MATCH DESK ACTIVE
+        </span>
+    </div>
+
+    <div class="main-card">
+
+        <div class="eyebrow">WELCOME TO NM REPORTS</div>
+
+        <h2>THE GAME.<br><span>THE ANALYSIS.</span></h2>
+
+        <div class="timer-label">
+            NEXT MATCH REPORT IN
+        </div>
+
+        <div class="timer">
+
+            <div class="time-box">
+                <strong id="minutes">15</strong>
+                <small>MINUTES</small>
+            </div>
+
+            <div class="colon">:</div>
+
+            <div class="time-box">
+                <strong id="seconds">00</strong>
+                <small>SECONDS</small>
+            </div>
+
+        </div>
+
+        <div class="timer-note">
+            Indicative update window · Timing may vary
+        </div>
+
+    </div>
+
+    <div class="features">
+
+        <div class="feature-heading">
+            INSIDE THE NM EXPERIENCE
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-top">
+                <span>CRICKET INSIGHTS</span>
+                <span>01</span>
+            </div>
+
+            <div class="blocks">
+                <i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i>
+            </div>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-top">
+                <span>MATCH ANALYSIS</span>
+                <span>02</span>
+            </div>
+
+            <div class="blocks">
+                <i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i>
+            </div>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-top">
+                <span>PRE-MATCH UPDATES</span>
+                <span>03</span>
+            </div>
+
+            <div class="blocks">
+                <i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="floating">
+
+        <div class="float-item">◉ Research</div>
+        <div class="float-item">✦ Insights</div>
+        <div class="float-item">◈ Analysis</div>
+
+    </div>
+
+    <a href="YOUR_TELEGRAM_LINK"
+       target="_blank"
+       rel="noopener"
+       class="join-btn">
+
+       EXPLORE NM REPORTS →
+
+    </a>
+
+    <div class="footer">
+        NM REPORTS · CRICKET COMMUNITY
+    </div>
+
+</div>
+
+
+<!-- UPDATE NOTIFICATION -->
+
+<div class="toast" id="toast">
+
+    <div class="toast-icon">NM</div>
+
+    <div class="toast-text">
+        <strong>NM REPORTS</strong>
+        <small>Cricket analysis desk is active.</small>
+    </div>
+
+</div>
+
+
+<script>
+
+// 15 MINUTE COUNTDOWN
+
+let totalSeconds = 15 * 60;
+
+function updateTimer(){
+
+    let min = Math.floor(totalSeconds / 60);
+    let sec = totalSeconds % 60;
+
+    document.getElementById("minutes").innerText =
+        String(min).padStart(2,"0");
+
+    document.getElementById("seconds").innerText =
+        String(sec).padStart(2,"0");
+
+    if(totalSeconds > 0){
+        totalSeconds--;
+    }else{
+        totalSeconds = 15 * 60;
+    }
+
+}
+
+updateTimer();
+
+setInterval(updateTimer,1000);
+
+
+// SUBTLE NOTIFICATION SYSTEM
+
+const messages = [
+
+    "Match analysis desk is active.",
+    "Stay updated with upcoming match reports.",
+    "Pre-match insights are part of the NM experience.",
+    "Welcome to the NM Reports community.",
+    "Cricket updates and analysis in one place."
+
+];
+
+function showToast(){
+
+    const toast = document.getElementById("toast");
+
+    toast.querySelector("small").innerText =
+        messages[Math.floor(Math.random()*messages.length)];
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    },3000);
+
+}
+
+setTimeout(()=>{
+
+    showToast();
+
+    setInterval(showToast,9000);
+
+},4000);
+
+</script>
+
+</body>
+</html>
