@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<title>NM REPORTS | Premium Cricket Community</title>
+<title>NM REPORTS | Elite Cricket Analysis</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -17,20 +18,27 @@
 }
 
 :root{
-    --white:#ffffff;
-    --grey:#999999;
-    --dark:#050505;
+    --white:#fff;
+    --muted:#999;
+    --black:#050505;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
 }
 
 body{
     background:#050505;
     color:white;
     font-family:'Inter',sans-serif;
-    min-height:100vh;
+    min-height:100svh;
     display:flex;
-    justify-content:center;
     align-items:center;
-    overflow:hidden;
+    justify-content:center;
+    padding:12px;
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 
 body:before{
@@ -38,82 +46,100 @@ body:before{
     position:fixed;
     inset:0;
     background:
-    radial-gradient(circle at 50% 35%,#242424 0%,transparent 48%),
-    radial-gradient(circle at 10% 90%,#171717 0%,transparent 40%);
+    radial-gradient(ellipse at 50% 30%,#292929 0%,transparent 65%);
     pointer-events:none;
 }
+
+/* MAIN CARD */
 
 .container{
     position:relative;
     z-index:2;
     width:100%;
-    max-width:430px;
-    min-height:100vh;
-    padding:22px 23px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    animation:enter 1s ease both;
+    max-width:410px;
+    padding:19px 19px 15px;
+    border:1px solid #414141;
+    border-radius:25px;
+    background:linear-gradient(145deg,#171717,#080808 65%,#111);
+    box-shadow:
+    0 20px 70px #000,
+    inset 0 1px 0 #ffffff12;
+    overflow:hidden;
+    animation:opening .9s ease both;
 }
 
-@keyframes enter{
+.container:before{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    top:-150px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#fff;
+    opacity:.07;
+    filter:blur(70px);
+    pointer-events:none;
+}
+
+@keyframes opening{
     from{
         opacity:0;
-        transform:translateY(25px);
-        filter:blur(8px);
+        transform:translateY(20px) scale(.97);
+        filter:blur(7px);
     }
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:translateY(0) scale(1);
         filter:blur(0);
     }
 }
 
-/* TOP BRAND */
+/* BRAND */
 
 .brand{
     text-align:center;
-    margin-bottom:19px;
+    position:relative;
+    z-index:1;
 }
 
 .logo-box{
-    width:83px;
-    height:83px;
-    margin:0 auto 12px;
-    border-radius:23px;
-    background:linear-gradient(145deg,#242424,#080808);
-    border:1px solid #444;
+    width:66px;
+    height:66px;
+    margin:0 auto 9px;
+    border-radius:19px;
+    border:1px solid #555;
+    background:linear-gradient(145deg,#303030,#090909);
     display:flex;
     align-items:center;
     justify-content:center;
-    box-shadow:0 0 35px #ffffff12;
-    animation:logoGlow 3s infinite alternate;
+    box-shadow:0 0 25px #ffffff12;
+    animation:glow 3s infinite alternate;
 }
 
 .logo-box img{
-    width:72%;
-    height:72%;
+    width:76%;
+    height:76%;
     object-fit:contain;
 }
 
-@keyframes logoGlow{
-    from{box-shadow:0 0 10px #ffffff12;}
-    to{box-shadow:0 0 30px #ffffff30;}
+@keyframes glow{
+    from{box-shadow:0 0 8px #ffffff10;}
+    to{box-shadow:0 0 25px #ffffff30;}
 }
 
 .brand h1{
     font-family:'Orbitron',sans-serif;
-    font-size:27px;
+    font-size:24px;
     font-weight:900;
-    letter-spacing:4px;
+    letter-spacing:3px;
 }
 
 .brand p{
-    font-size:9px;
-    letter-spacing:4px;
     color:#999;
-    margin-top:6px;
-    font-weight:600;
+    font-size:8px;
+    letter-spacing:3px;
+    margin-top:5px;
 }
 
 /* STATUS */
@@ -121,71 +147,59 @@ body:before{
 .status{
     display:flex;
     justify-content:center;
-    margin-bottom:18px;
+    margin:13px 0;
 }
 
 .status span{
-    border:1px solid #373737;
+    border:1px solid #444;
     border-radius:30px;
-    padding:7px 14px;
-    font-size:9px;
-    letter-spacing:1.5px;
-    color:#ddd;
+    padding:6px 12px;
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:7px;
+    color:#ddd;
+    font-size:8px;
+    font-weight:700;
+    letter-spacing:1.5px;
 }
 
 .dot{
-    height:7px;
-    width:7px;
-    background:#fff;
+    width:6px;
+    height:6px;
+    background:white;
     border-radius:50%;
-    box-shadow:0 0 10px white;
-    animation:blink 1.2s infinite;
+    box-shadow:0 0 9px white;
+    animation:blink 1s infinite;
 }
 
 @keyframes blink{
-    50%{opacity:.25;}
+    50%{opacity:.3;}
 }
 
-/* MAIN CARD */
+/* MAIN MATCH CARD */
 
 .main-card{
-    background:linear-gradient(145deg,#171717,#090909);
-    border:1px solid #333;
-    border-radius:22px;
-    padding:23px 18px;
+    border:1px solid #414141;
+    border-radius:18px;
+    background:linear-gradient(145deg,#242424,#101010);
+    padding:17px 12px;
     text-align:center;
     position:relative;
     overflow:hidden;
-    box-shadow:0 20px 60px #000;
-}
-
-.main-card:before{
-    content:"";
-    position:absolute;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:#ffffff08;
-    top:-100px;
-    left:50%;
-    transform:translateX(-50%);
-    filter:blur(20px);
 }
 
 .eyebrow{
-    font-size:10px;
+    font-size:9px;
     color:#aaa;
     letter-spacing:3px;
     font-weight:700;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 .main-card h2{
-    font-size:23px;
+    font-size:21px;
     font-weight:900;
+    line-height:1.25;
     letter-spacing:1px;
 }
 
@@ -196,77 +210,76 @@ body:before{
 /* TIMER */
 
 .timer-label{
-    margin-top:22px;
-    font-size:10px;
+    font-size:9px;
     color:#aaa;
     letter-spacing:2px;
-    font-weight:600;
+    margin-top:15px;
+    font-weight:700;
 }
 
 .timer{
     display:flex;
-    justify-content:center;
     align-items:center;
-    gap:9px;
-    margin-top:13px;
+    justify-content:center;
+    gap:8px;
+    margin-top:9px;
 }
 
 .time-box{
-    width:76px;
-    padding:13px 5px;
-    background:linear-gradient(180deg,#242424,#101010);
-    border:1px solid #454545;
-    border-radius:12px;
+    width:75px;
+    padding:9px 5px;
+    border:1px solid #555;
+    border-radius:10px;
+    background:linear-gradient(180deg,#292929,#101010);
 }
 
 .time-box strong{
     font-family:'Orbitron',sans-serif;
-    font-size:29px;
+    font-size:27px;
     font-weight:800;
-    display:block;
     font-variant-numeric:tabular-nums;
 }
 
 .time-box small{
-    font-size:8px;
-    color:#999;
-    letter-spacing:2px;
     display:block;
-    margin-top:5px;
+    font-size:7px;
+    color:#aaa;
+    letter-spacing:2px;
+    margin-top:3px;
 }
 
 .colon{
-    font-size:24px;
-    color:#777;
+    font-size:22px;
+    color:white;
     animation:blink 1s infinite;
 }
 
 .timer-note{
-    font-size:9px;
+    font-size:8px;
     color:#777;
-    margin-top:12px;
+    margin-top:9px;
 }
 
-/* DIGITAL HIGHLIGHTS */
+/* HIGHLIGHTS */
 
 .features{
-    margin-top:20px;
-    padding:17px;
-    border:1px solid #292929;
-    border-radius:17px;
-    background:#101010;
+    margin-top:13px;
+    padding:14px;
+    border:1px solid #333;
+    border-radius:16px;
+    background:#0d0d0d;
 }
 
 .feature-heading{
-    font-size:10px;
-    letter-spacing:2px;
     color:#999;
-    font-weight:700;
-    margin-bottom:15px;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:12px;
 }
 
 .feature{
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 .feature:last-child{
@@ -278,15 +291,17 @@ body:before{
     justify-content:space-between;
     align-items:center;
     font-size:10px;
-    font-weight:600;
-    margin-bottom:8px;
+    font-weight:800;
+    margin-bottom:7px;
 }
 
 .feature-top span:last-child{
     color:#aaa;
     font-family:'Orbitron',sans-serif;
-    font-size:9px;
+    font-size:8px;
 }
+
+/* ALL BARS MAXIMUM */
 
 .blocks{
     display:flex;
@@ -294,50 +309,30 @@ body:before{
 }
 
 .blocks i{
-    display:block;
     flex:1;
     height:6px;
-    background:#303030;
-    border-radius:2px;
-    animation:blockPulse 2s infinite alternate;
+    display:block;
+    border-radius:3px;
+    background:#f2f2f2;
+    box-shadow:0 0 5px #ffffff18;
 }
 
-.blocks i:nth-child(-n+5){
-    background:#eee;
-}
-
-.blocks i:nth-child(2){
-    animation-delay:.2s;
-}
-
-.blocks i:nth-child(3){
-    animation-delay:.4s;
-}
-
-.blocks i:nth-child(4){
-    animation-delay:.6s;
-}
-
-@keyframes blockPulse{
-    from{opacity:.45;}
-    to{opacity:1;}
-}
-
-/* FLOATING HIGHLIGHTS */
+/* FLOATING TAGS */
 
 .floating{
     display:flex;
     justify-content:center;
-    gap:9px;
-    margin-top:17px;
+    gap:7px;
+    margin-top:13px;
 }
 
 .float-item{
-    border:1px solid #373737;
-    background:#111;
-    border-radius:50px;
-    padding:9px 12px;
-    font-size:9px;
+    padding:7px 11px;
+    background:#191919;
+    border:1px solid #444;
+    border-radius:30px;
+    font-size:8px;
+    font-weight:700;
     color:#ddd;
     animation:float 3s ease-in-out infinite;
 }
@@ -352,63 +347,94 @@ body:before{
 
 @keyframes float{
     0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-5px);}
+    50%{transform:translateY(-4px);}
 }
 
-/* CTA */
+/* JOIN BUTTON */
 
 .join-btn{
-    display:block;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
     width:100%;
-    text-decoration:none;
-    text-align:center;
-    margin-top:21px;
-    background:#fff;
-    color:#050505;
-    padding:17px;
+    margin-top:16px;
+    padding:16px 12px;
     border-radius:12px;
+    text-decoration:none;
+    color:#050505;
+    background:linear-gradient(110deg,#fff,#d8d8d8,#fff);
     font-size:12px;
     font-weight:900;
     letter-spacing:2px;
+    box-shadow:
+    0 5px 25px #ffffff25,
+    inset 0 1px 0 white;
     transition:.3s;
-    box-shadow:0 5px 25px #ffffff20;
+    overflow:hidden;
+}
+
+.join-btn:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,#ffffffaa,transparent);
+    transform:skewX(-20deg);
+    animation:shine 3s infinite;
+}
+
+@keyframes shine{
+    0%{left:-100%;}
+    55%,100%{left:150%;}
 }
 
 .join-btn:active{
     transform:scale(.97);
+    box-shadow:0 0 30px #ffffff50;
 }
 
-.join-btn:hover{
-    background:#ddd;
+.join-btn span{
+    position:relative;
+    z-index:1;
 }
+
+.join-icon{
+    font-size:17px;
+}
+
+/* FOOTER */
 
 .footer{
     text-align:center;
-    color:#555;
+    color:#666;
     font-size:8px;
     letter-spacing:2px;
-    margin-top:18px;
+    margin-top:13px;
 }
 
 /* NOTIFICATION */
 
 .toast{
     position:fixed;
-    bottom:25px;
+    bottom:18px;
     left:50%;
     transform:translate(-50%,120px);
-    width:calc(100% - 45px);
+    width:calc(100% - 35px);
     max-width:370px;
-    padding:13px 15px;
+    padding:11px;
+    background:#1b1b1b;
+    border:1px solid #555;
     border-radius:13px;
-    background:#181818;
-    border:1px solid #444;
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:10px;
     z-index:10;
     transition:.5s;
-    box-shadow:0 10px 35px #000;
+    box-shadow:0 10px 30px #000;
 }
 
 .toast.show{
@@ -416,34 +442,82 @@ body:before{
 }
 
 .toast-icon{
-    width:35px;
-    height:35px;
-    background:#fff;
-    color:#000;
+    width:33px;
+    height:33px;
+    border-radius:9px;
+    background:white;
+    color:black;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:10px;
+    font-family:'Orbitron',sans-serif;
+    font-size:10px;
     font-weight:900;
 }
 
 .toast-text strong{
-    font-size:10px;
     display:block;
+    font-size:10px;
 }
 
 .toast-text small{
-    color:#999;
-    font-size:9px;
     display:block;
+    color:#aaa;
+    font-size:9px;
     margin-top:4px;
 }
 
-@media(max-height:750px){
+/* SMALL SCREEN ADJUSTMENT */
+
+@media(max-height:740px){
+
+    body{
+        padding:7px;
+    }
+
     .container{
-        padding-top:12px;
-        padding-bottom:12px;
-        transform:scale(.91);
+        padding:13px 15px 11px;
+    }
+
+    .logo-box{
+        width:53px;
+        height:53px;
+        border-radius:15px;
+        margin-bottom:6px;
+    }
+
+    .brand h1{
+        font-size:21px;
+    }
+
+    .status{
+        margin:9px 0;
+    }
+
+    .main-card{
+        padding:12px 10px;
+    }
+
+    .features{
+        margin-top:9px;
+        padding:11px;
+    }
+
+    .feature{
+        margin-bottom:9px;
+    }
+
+    .floating{
+        margin-top:9px;
+    }
+
+    .join-btn{
+        margin-top:11px;
+        padding:13px;
+    }
+
+    .footer{
+        margin-top:9px;
     }
 }
 
@@ -454,29 +528,45 @@ body:before{
 
 <div class="container">
 
+    <!-- BRAND -->
+
     <div class="brand">
 
         <div class="logo-box">
-            <img src="logo.png" alt="NM Reports Logo">
+            <img src="logo.png" alt="NM Reports">
         </div>
 
         <h1>NM REPORTS</h1>
+
         <p>CRICKET ANALYSIS COMMUNITY</p>
 
     </div>
 
+
+    <!-- STATUS -->
+
     <div class="status">
+
         <span>
             <i class="dot"></i>
             MATCH DESK ACTIVE
         </span>
+
     </div>
+
+
+    <!-- MAIN TIMER CARD -->
 
     <div class="main-card">
 
-        <div class="eyebrow">WELCOME TO NM REPORTS</div>
+        <div class="eyebrow">
+            WELCOME TO NM REPORTS
+        </div>
 
-        <h2>THE GAME.<br><span>THE ANALYSIS.</span></h2>
+        <h2>
+            THE GAME.<br>
+            <span>THE ANALYSIS.</span>
+        </h2>
 
         <div class="timer-label">
             NEXT MATCH REPORT IN
@@ -504,6 +594,9 @@ body:before{
 
     </div>
 
+
+    <!-- HIGHLIGHTS -->
+
     <div class="features">
 
         <div class="feature-heading">
@@ -518,11 +611,12 @@ body:before{
             </div>
 
             <div class="blocks">
-                <i></i><i></i><i></i><i></i><i></i>
-                <i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i>
             </div>
 
         </div>
+
 
         <div class="feature">
 
@@ -532,11 +626,12 @@ body:before{
             </div>
 
             <div class="blocks">
-                <i></i><i></i><i></i><i></i><i></i>
-                <i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i>
             </div>
 
         </div>
+
 
         <div class="feature">
 
@@ -546,30 +641,45 @@ body:before{
             </div>
 
             <div class="blocks">
-                <i></i><i></i><i></i><i></i><i></i>
-                <i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i>
             </div>
 
         </div>
 
     </div>
 
+
+    <!-- FLOATING TAGS -->
+
     <div class="floating">
 
         <div class="float-item">◉ Research</div>
+
         <div class="float-item">✦ Insights</div>
+
         <div class="float-item">◈ Analysis</div>
 
     </div>
 
-    <a href="YOUR_TELEGRAM_LINK"
+
+    <!-- JOIN BUTTON -->
+
+    <a href="https://t.me/+9ixIg39cg0tjZjA1"
        target="_blank"
-       rel="noopener"
+       rel="noopener noreferrer"
        class="join-btn">
 
-       EXPLORE NM REPORTS →
+        <span class="join-icon">➜</span>
+
+        <span>JOIN NM REPORTS</span>
+
+        <span>↗</span>
 
     </a>
+
+
+    <!-- FOOTER -->
 
     <div class="footer">
         NM REPORTS · CRICKET COMMUNITY
@@ -578,15 +688,20 @@ body:before{
 </div>
 
 
-<!-- UPDATE NOTIFICATION -->
+<!-- NOTIFICATION -->
 
 <div class="toast" id="toast">
 
     <div class="toast-icon">NM</div>
 
     <div class="toast-text">
+
         <strong>NM REPORTS</strong>
-        <small>Cricket analysis desk is active.</small>
+
+        <small id="toastMessage">
+            Cricket analysis desk is active.
+        </small>
+
     </div>
 
 </div>
@@ -600,8 +715,9 @@ let totalSeconds = 15 * 60;
 
 function updateTimer(){
 
-    let min = Math.floor(totalSeconds / 60);
-    let sec = totalSeconds % 60;
+    const min = Math.floor(totalSeconds / 60);
+
+    const sec = totalSeconds % 60;
 
     document.getElementById("minutes").innerText =
         String(min).padStart(2,"0");
@@ -610,9 +726,13 @@ function updateTimer(){
         String(sec).padStart(2,"0");
 
     if(totalSeconds > 0){
+
         totalSeconds--;
+
     }else{
+
         totalSeconds = 15 * 60;
+
     }
 
 }
@@ -622,15 +742,19 @@ updateTimer();
 setInterval(updateTimer,1000);
 
 
-// SUBTLE NOTIFICATION SYSTEM
+// NOTIFICATION SYSTEM
 
 const messages = [
 
-    "Match analysis desk is active.",
-    "Stay updated with upcoming match reports.",
-    "Pre-match insights are part of the NM experience.",
+    "Cricket analysis desk is active.",
+
+    "Upcoming match insights are being prepared.",
+
+    "Stay connected for pre-match updates.",
+
     "Welcome to the NM Reports community.",
-    "Cricket updates and analysis in one place."
+
+    "New cricket analysis updates are on the way."
 
 ];
 
@@ -638,14 +762,18 @@ function showToast(){
 
     const toast = document.getElementById("toast");
 
-    toast.querySelector("small").innerText =
+    const message = document.getElementById("toastMessage");
+
+    message.innerText =
         messages[Math.floor(Math.random()*messages.length)];
 
     toast.classList.add("show");
 
     setTimeout(()=>{
+
         toast.classList.remove("show");
-    },3000);
+
+    },2800);
 
 }
 
@@ -653,9 +781,9 @@ setTimeout(()=>{
 
     showToast();
 
-    setInterval(showToast,9000);
+    setInterval(showToast,10000);
 
-},4000);
+},5000);
 
 </script>
 
